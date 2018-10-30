@@ -10,7 +10,7 @@ tt = np.arange(0,nsamples)/fs
 ff = np.linspace(-fs/2,fs/2,fftsize)
 ftest = 100
 
-fp = open('/home/ssarris/demo.iq','rb')
+fp = open('demo.iq','rb')
 fp.seek(0,0)
 dt = np.dtype([('i',np.float32),('q',np.float32)])
 data = np.fromfile(fp,dtype=dt,count=nsamples)

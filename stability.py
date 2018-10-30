@@ -8,27 +8,27 @@ baseband_fs=1000.0
 # Read all files
 dt = np.dtype([('i',np.float32),('q',np.float32)])
 
-fp = open('/home/ssarris/sdreval/f100M_fs1K_fft32.iq','rb')
+fp = open('f100M_fs1K_fft32.iq','rb')
 data32 = np.fromfile(fp,dtype=dt,count=-1)
 fp.close()
 
-fp = open('/home/ssarris/sdreval/f100M_fs1K_fft64.iq','rb')
+fp = open('f100M_fs1K_fft64.iq','rb')
 data64 = np.fromfile(fp,dtype=dt,count=-1)
 fp.close()
 
-fp = open('/home/ssarris/sdreval/f100M_fs1K_fft128.iq','rb')
+fp = open('f100M_fs1K_fft128.iq','rb')
 data128 = np.fromfile(fp,dtype=dt,count=-1)
 fp.close()
 
-fp = open('/home/ssarris/sdreval/f100M_fs1K_fft256.iq','rb')
+fp = open('f100M_fs1K_fft256.iq','rb')
 data256 = np.fromfile(fp,dtype=dt,count=-1)
 fp.close()
 
-fp = open('/home/ssarris/sdreval/f100M_fs1K_fft512.iq','rb')
+fp = open('f100M_fs1K_fft512.iq','rb')
 data512 = np.fromfile(fp,dtype=dt,count=-1)
 fp.close()
 
-fp = open('/home/ssarris/sdreval/f100M_fs1K_fft1024.iq','rb')
+fp = open('f100M_fs1K_fft1024.iq','rb')
 data1024 = np.fromfile(fp,dtype=dt,count=-1)
 fp.close()
 
