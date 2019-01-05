@@ -2,29 +2,54 @@ import numpy as np
 import matplotlib
 matplotlib.use("QT4Agg")
 import matplotlib.pyplot as plt
+import scipy.signal
 
-fftsize = 1024
-nsamples = 1024
-fs = 8e6
+
+fs = 1e6
+t_end = 40e-6
+nsamples = t_end*fs
+
 tt = np.arange(0,nsamples)/fs
-ff = np.linspace(-fs/2,fs/2,fftsize)
-ftest = 0
-phi0 = np.pi/4
+phi0 = 0
 
-sigt = np.exp(1j*(2*np.pi*ftest*tt+phi0))
-sigf = np.fft.fft(sigt,fftsize)
+freq = 50e3
 
+# Generate a complex-valued signal
+sigct = np.exp(1j*(2*np.pi*freq*tt+phi0))
 fig = plt.figure(1)
-ax1 = plt.subplot(211)
-plt.title('demo')
-plt.plot(tt*1e3,np.real(sigt),'b')
-plt.plot(tt*1e3,np.imag(sigt),'r')
-plt.xlabel('Time (ms)')
+ax1 = plt.subplot(111)
+plt.title('Complex-Valued Signal. freq = 50 kHz, fs = 1 MHz, ')
+plt.plot(tt*1e6,np.real(sigct),'k--')
+plt.plot(tt*1e6,np.real(sigct),'bo', label='I')
+plt.plot(tt*1e6,np.imag(sigct),'k--')
+plt.plot(tt*1e6,np.imag(sigct),'ro', label='Q')
+plt.xlabel('Time (us)')
 plt.grid(True)
+plt.legend(loc=3)
 
-ax2 = plt.subplot(212)
-sigfshift = np.fft.fftshift(sigf)
-plt.plot(ff/1e6,20*np.log10(np.abs(sigfshift)))
-plt.xlabel('Frequency (MHz)')
+# Generate a real-valued signal
+sigrt = np.cos(2*np.pi*freq*tt+phi0)
+fig = plt.figure(2)
+ax1 = plt.subplot(111)
+plt.title('Real-Valued Signal. freq = 50 kHz, fs = 1 MHz, ')
+plt.plot(tt*1e6,np.real(sigct),'k--')
+plt.plot(tt*1e6,np.real(sigct),'bo', label='I')
+plt.xlabel('Time (us)')
 plt.grid(True)
+plt.legend(loc=3)
+
+# Use Hilbert transform to generate complex-valued analytical signal
+sighct = scipy.signal.hilbert(sigrt)
+fig = plt.figure(3)
+ax1 = plt.subplot(111)
+plt.title('Analytical Signal from Hilbert Transform. freq = 50 kHz, fs = 1 MHz, ')
+plt.plot(tt*1e6,np.real(sighct),'k--')
+plt.plot(tt*1e6,np.real(sighct),'bo', label='I')
+plt.plot(tt*1e6,np.imag(sighct),'k--')
+plt.plot(tt*1e6,np.imag(sighct),'ro', label='Q')
+plt.xlabel('Time (us)')
+plt.grid(True)
+plt.legend(loc=3)
+
+# Show all plots
 plt.show()
