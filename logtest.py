@@ -1,8 +1,6 @@
 import LoggerTestFile
-# Import short function names into iPython namespace
-from LoggerTestFunctions import *
 
-mytest = LoggerTestFile.LoggerTestClass('my name')
+mytest = LoggerTestFile.LoggerSession('todaysession')
 
-mytest.startLog()
-mytest.showMe()
+mytest.createShow()
+mytest.mycomp.doSomething()
