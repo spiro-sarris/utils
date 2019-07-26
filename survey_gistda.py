@@ -16,7 +16,7 @@ list_of_files_ant = [("/home/ssarris/Documents/spectrum/f0600M_14000M_az00.csv",
 				("/home/ssarris/Documents/spectrum/f0600M_14000M_az45.csv",45),
 				("/home/ssarris/Documents/spectrum/f0600M_14000M_az90.csv",90),
 				("/home/ssarris/Documents/spectrum/f0600M_2600M_az0.csv",0),
-				("/home/ssarris/Documents/spectrum/f3500M_4500M_az135.csv",0),
+				("/home/ssarris/Documents/spectrum/f3500M_4500M_az135.csv",135),
 				]
 
 list_of_files_50ohm_term = [("/home/ssarris/Documents/spectrum/f0600M_14000M_50ohm.csv",0),
